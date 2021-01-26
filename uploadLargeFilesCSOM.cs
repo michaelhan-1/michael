@@ -1,5 +1,5 @@
-            int blockSize = 10000000; // 8 MB
-            string fileName = "C:\\2gb.test", uniqueFileName = String.Empty;
+            int blockSize = 10000000; // 10 MB
+            string fileName = "C:\\2gb.test";
             long fileSize;
             Microsoft.SharePoint.Client.File uploadFile = null;
             Guid uploadId = Guid.NewGuid();
@@ -13,7 +13,6 @@
                 fs = System.IO.File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
                 fileSize = fs.Length;
-                uniqueFileName = System.IO.Path.GetFileName(fs.Name);
 
                 using (BinaryReader br = new BinaryReader(fs))
                 {
@@ -73,10 +72,7 @@
                                 {
                                     // End sliced upload by calling FinishUpload
                                     uploadFile = uploadFile.FinishUpload(uploadId, fileoffset, s);
-                                    ctx.ExecuteQuery();
-
-                                    // return the file object for the uploaded file
-                                   
+                                    ctx.ExecuteQuery();                                       
                                 }
                             }
                             else
