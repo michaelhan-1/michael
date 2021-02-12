@@ -1,0 +1,13 @@
+            var credentials = new SharePointOnlineCredentials(name, securePassword);
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add("X-FORMS_BASED_AUTH_ACCEPTED", "f");
+                client.Credentials = credentials;
+                Uri endpointUri = new Uri("https://michael1.sharepoint.com/sites/test/_api/web/GetFileByServerRelativeUrl('/sites/test/doc1/aa.docx')/$value");
+
+                byte[] data = client.DownloadData(endpointUri);
+                FileStream outputStream = new FileStream("c:\\test.docx", FileMode.OpenOrCreate | FileMode.Append, FileAccess.Write, FileShare.None);
+                outputStream.Write(data, 0, data.Length);
+                outputStream.Flush(true);
+                outputStream.Close();
+            }
