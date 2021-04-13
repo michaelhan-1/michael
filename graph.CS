@@ -1,3 +1,8 @@
+using Microsoft.Graph;
+using Microsoft.Identity.Client;
+using Microsoft.Graph.Auth;
+
+
             string clientId = "<Client-ID>";
             string tenantID = "<Tenant-ID>";
             string clientSecret = "<Client-secret>";
