@@ -1,0 +1,7 @@
+1.Get admin center properties:
+
+https://tenant-admin.sharepoint.com/_api/Microsoft.Online.SharePoint.TenantManagement.Office365Tenant
+
+2.Get user details for person column:
+
+/_api/web/lists/getbytitle('ListName')/items?$select=MyUserField/Name&$expand=MyUserField
